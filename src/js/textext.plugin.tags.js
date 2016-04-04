@@ -282,7 +282,7 @@
 	p.onGetFormData = function(e, data, keyCode)
 	{
 		var self       = this,
-			inputValue = keyCode === 13 ? '' : self.val(),
+			inputValue = self.val(),
 			formValue  = self._formData
 			;
 
@@ -597,8 +597,10 @@
 		{
 			tag = tags[i];
 
-			if(tag && self.isTagAllowed(tag))
+			if(tag && self.isTagAllowed(tag)){
 				container.append(self.renderTag(tag));
+        self.input().val('');
+      }
 		}
 
 		self.updateFormCache();
